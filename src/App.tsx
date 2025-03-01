@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { WeatherChart } from './components/WeatherChart';
 import { SearchBar } from './components/SearchBar';
 import { Controls } from './components/Controls';
