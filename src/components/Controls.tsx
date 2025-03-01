@@ -15,7 +15,7 @@ export const Controls: React.FC<ControlsProps> = ({
   onGranularityChange,
 }) => {
   return (
-    <div className="flex gap-5 items-center my-5">
+    <div className="flex gap-5 md:items-center my-5 md:flex-row flex-col items-start">
       <div>
         <label className="mr-2">Метрика: </label>
         <select

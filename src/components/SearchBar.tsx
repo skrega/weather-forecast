@@ -38,10 +38,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onCityAdd }) => {
   };
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 flex justify-start gap-2 md:flex-row flex-col">
       <input
         type="text"
-        className="px-4 py-2 text-base border border-gray-300 rounded focus:outline-none focus:border-neutral-700 mr-2 w-[30%] transition-all duration-300"
+        className="px-4 py-2 text-base border border-gray-300 rounded focus:outline-none focus:border-neutral-700 lg:w-[30%] md:w-[50%] w-full transition-all duration-300"
         value={cityName}
         onChange={(e) => setCityName(e.target.value)}
         placeholder="Введите название города"

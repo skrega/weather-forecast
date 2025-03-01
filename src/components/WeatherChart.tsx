@@ -1,6 +1,9 @@
 import React from 'react';
 import { LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line, ResponsiveContainer } from 'recharts';
 import { City, MetricType, WeatherData } from '../types/weather';
+import { translateWeather } from '../utils/weatherTranslations';
+import { TooltipProps } from 'recharts';
+import { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7300', '#00C49F'];
 
@@ -49,9 +52,13 @@ interface WeatherChartProps {
   granularity: '3h' | '1d';
 }
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({
+  active,
+  payload
+}: TooltipProps<ValueType, NameType>) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
+    const description = translateWeather(data.weather[0].description);
     return (
       <div className="bg-white p-3 border border-gray-200 rounded shadow">
         <p>{formatDate(data.dt)}</p>
@@ -59,7 +66,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
         <p>Давление: {data.main.pressure} hPa</p>
         <p>Влажность: {data.main.humidity}%</p>
         <p>Ветер: {data.wind.speed} м/с</p>
-        <p>Погода: {data.weather[0].description}</p>
+        <p>Погода: {description}</p>
       </div>
     );
   }
